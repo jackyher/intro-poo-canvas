@@ -58,12 +58,12 @@ class Circle {
     }
 }
 
+let miCirculo = new Circle(canvasOOP.width / 2, canvasOOP.height / 2, 50, 'rgb(84, 148, 247)', 'Tec', '#a9ccfc');
+miCirculo.draw(ctx);
+
 let randomX =  Math.random()* canvasRandom.width;
 let randomY =  Math.random()* canvasRandom.height;
 let randomRadius = Math.floor(Math.random()*100 + 30);
-
-let miCirculo = new Circle(canvasOOP.width / 2, canvasOOP.height / 2, 50, 'rgb(84, 148, 247)', 'Tec', '#a9ccfc');
-miCirculo.draw(ctx);
 
 let miCirculoRandom = new Circle(randomX, randomY, randomRadius, '#85a1ff', 'Tec', '#b1c2fa');
 miCirculoRandom.draw(ctxRandom);
@@ -72,9 +72,10 @@ miCirculoRandom.draw(ctxRandom);
 let arrayCircle = [];
 
 for (let i = 0; i < 10; i++) {
-    let randomX = Math.random() * canvasMultiple.width;
-    let randomY = Math.random() * canvasMultiple.height;
-    let randomRadius = Math.floor(Math.random() * 10 + 30);
+    let randomRadius = Math.min(Math.random() * 10 + 30, Math.min(canvasMultiple.width, canvasMultiple.height) / 2);
+    let randomX = Math.random() * (canvasMultiple.width - 2 * randomRadius) + randomRadius;
+    let randomY = Math.random() * (canvasMultiple.height - 2 * randomRadius) + randomRadius;
+    //let randomRadius = Math.floor(Math.random() * 10 + 30);
 
     let miCirculoMultiple = new Circle(randomX, randomY, randomRadius, "#bda1f0", i + 1, "#d1c3eb");
 
